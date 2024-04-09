@@ -6,6 +6,7 @@
     let answer = ""
     let loading = false
   
+    //Gestion de las miniaturas del file
     const numOfImagesToShow = Math.min(pages, 4)
     const images = Array.from({ length: numOfImagesToShow }, (_, i) => {
       const page = i + 1
@@ -14,6 +15,7 @@
         .replace(".pdf", ".jpg")
     })
   
+    //Gestion de la respuesta
     const handleSubmit = async (event) => {
       event.preventDefault()
   
@@ -59,8 +61,8 @@
   
   <form class="mt-8" on:submit={handleSubmit}>
     <Label for="question" class="block mb-2">Deja aquí tu pregunta</Label>
-    <Input id="question" required placeholder="¿De qué trata este documento?"
-    ></Input>
+    <Input id="question" required placeholder="¿De qué trata este documento?">
+    </Input>
   </form>
   
   {#if loading}

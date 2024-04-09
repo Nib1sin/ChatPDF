@@ -3,7 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { v2 as cloudinary, type UploadApiResponse } from 'cloudinary';
-          
+
+//Config del fileSystem remoto para almacenar el file
 cloudinary.config({ 
     cloud_name: 'drr1wkadj', 
     api_key: '666463968786253', 
@@ -12,6 +13,8 @@ cloudinary.config({
 
 const outputDir = path.join(process.cwd(), 'public/text')
 
+
+//Gestion del array del stream del file
 const uploadStream = async (buffer: Uint8Array, options: {
   folder: string,
   ocr?: string,
@@ -26,6 +29,8 @@ const uploadStream = async (buffer: Uint8Array, options: {
     })
 }
 
+
+//Gestion del endPoint
 export const POST: APIRoute = async ({ request }) => {
   const formData = await request.formData();
   const file = formData.get('file') as File;
@@ -41,7 +46,7 @@ export const POST: APIRoute = async ({ request }) => {
     folder: 'pdf',
     ocr: 'adv_ocr'
   })
-console.log(result)
+  console.log(result)
 
   const {
     asset_id: id,

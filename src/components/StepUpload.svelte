@@ -13,7 +13,8 @@
   
     async function handleFilesSelect(e) {
       const { acceptedFiles, fileRejections } = e.detail
-  
+      //console.log(acceptedFiles)
+
       files.accepted = [...files.accepted, ...acceptedFiles]
       files.rejected = [...files.rejected, ...fileRejections]
   
@@ -32,7 +33,8 @@
           setAppStatusError()
           return
         }
-  
+        
+        //console.log(res)
         const { id, url, pages } = await res.json()
         setAppStatusChatMode({ id, url, pages })
       }
